@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebQuiz</title>
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+  <!-- Bagian Utama -->
+  <main class="main">
+    <!-- Header -->
+    <header class="header">
+      <a href="#" class="logo">Quiz.</a>
+      <nav class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="#">Html</a>
+        <a href="#">Css</a>
+        <a href="#">JS</a>
+      </nav>
+    </header>
+
+    <!-- Container Konten -->
+    <div class="container">
+      <!-- Bagian Quiz -->
+      <section class="quiz-section">
+        <div class="quiz-box">
+          <h1>Codehal Quiz</h1>
+          <div class="quiz-header">
+            <span>Quiz Front-End Web Dasar</span>
+            <span class="header-score">Score: 0/5</span>
+          </div>
+
+          <h2 class="question-text"></h2>
+
+          <div class="option-list"></div>
+
+          <div class="quiz-footer">
+            <span class="question-total">1 of 5 question</span>
+            <button class="next-btn">Next</button>
+          </div>
+        </div>
+
+        <!-- Hasil Akhir Quiz -->
+        <div class="kotak-nilai">
+          <h2>Nilai Quiz</h2>
+          <div class="persentase-container">
+            <div class="circular-progress">
+              <span class="progress-value">0%</span>
+            </div>
+            <span class="score-text">Your score 0 out of 5</span>
+          </div>
+
+          <div class="buttons">
+            <button class="tryAgain-btn">Try Again</button>
+            <button class="goHome-btn">Go To Home</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Halaman Awal -->
+      <section class="home">
+        <div class="home-content">
+          <h1>Quiz Website</h1>
+          <p>
+            Quiz ini berisikan soal-soal dengan materi dasar HTML, CSS, dan JavaScript
+          </p>
+          <button class="start-btn">Start Quiz</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Popup Info Setelah Klik Start -->
+  <div class="popup-info">
+    <h2>Quiz Guide</h2>
+    <span class="info">1. Quiz ini terdiri dari lima soal pilihan ganda</span>
+    <span class="info">2. Setiap soal memiliki bobot nilai 20</span>
+    <span class="info">3. Jika anda memilih jawaban yang salah, anda dapat melihat jawaban yang benar</span>
+    <span class="info">4. Jika anda gagal dan ingin menjawab ulang, tekan tombol Try Again</span>
+    <span class="info">5. Good luck!</span>
+
+    <div class="btn-group">
+      <button class="info-btn exit-btn">Exit Quiz</button>
+      <a href="#" class="info-btn continue-btn">Continue</a>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="question.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+*{   
+    margin: 0; /* Menghilangkan margin default pada semua elemen */
+    padding: 0; /* Menghilangkan padding default pada semua elemen */
+    box-sizing: border-box; /* Mengubah perhitungan ukuran agar termasuk padding dan border */
+    font-family: sans-serif; /* Mengatur font default menjadi sans-serif */
+}
+
+body{
+    color:#fff; /* Warna teks default putih */
+    background: #09001d; /* Warna latar belakang utama gelap */
+    overflow: hidden; /*Mencegah scrolling di halaman*/
+}
+
+.header{
+    position: fixed; /* Tetap di posisi atas saat discroll */
+    top: 0; /* Menempel ke atas halaman */
+    left: 0; /* Menempel ke kiri halaman */
+    width: 100%; /* Lebar penuh layar */
+    padding: 20px 10%; /* Padding atas-bawah 20px, kiri-kanan 10% */
+    background: transparent; /* Latar belakang transparan */
+    display: flex; /* Mengaktifkan flexbox */
+    justify-content: space-between; /* Menyebar elemen ke ujung kiri dan kanan */
+    align-items: center; /* Pusatkan elemen secara vertikal */
+    z-index: 100; /* Letakkan di atas elemen lain */
+}
+
+.logo{
+    font-size: 32px; /* Ukuran huruf besar */
+    color: aqua; /* Warna teks aqua */
+    text-decoration: none; /* Hilangkan garis bawah */
+    font-weight: 700; /* Tebal */
+    filter: drop-shadow(0 0 5px #09001d); /* Bayangan luar halus */
+}
+
+.navbar a{
+    font-size: 18px; /* Ukuran teks menu */
+    color:aqua; /* Warna link */
+    text-decoration: none; /* Hilangkan garis bawah */
+    font-weight: 500; /* Tebal sedang */
+    margin-left: 35px; /* Spasi antar link */
+    transition: .3s; /* Transisi saat hover */
+}
+
+.navbar a:hover,
+.navbar a.active{
+    color: aquamarine; /* Warna saat aktif atau hover */
+}
+
+.main{
+    min-height: 100vh; /* Tinggi minimum layar penuh */
+    background: url(img/bg-hitam.avif) no-repeat; /* Latar belakang gambar tidak mengulang */
+    background-size: cover; /* Gambar memenuhi seluruh area */
+    background-position: center; /* Gambar berada di tengah */
+    pointer-events: auto; /* Elemen bisa di klik */
+    transition: .3s ease; /* Efek transisi halus */
+}
+
+.main.active{
+    filter: blur(15px); /* Blur saat popup muncul */
+    pointer-events: none; /* Tidak bisa diklik */
+}
+
+.container{
+    display: flex; /* Flexbox horizontal */
+    height: 100vh; /* Tinggi penuh layar */
+    width: 200%; /* Lebar 2x layar, agar bisa digeser antar halaman */
+}
+
+.home{
+    position: relative; /* Posisi relatif untuk pemindahan */
+    left: -50%; /* Geser ke kiri setengah dari container */
+    width: 100%; /* Lebar penuh layar */
+    display: flex; /* Flexbox */
+    justify-content: center; /* Pusat horizontal */
+    align-items: center; /* Pusat vertikal */
+}
+
+.home-content{
+    max-width: 600px; /* Maksimum lebar konten */
+    display: flex; /* Flexbox */
+    align-items: center; /* Pusat vertikal */
+    flex-direction: column; /* Elemen ditumpuk vertikal */
+}
+
+.home-content h1{
+    font-size: 65px; /* Ukuran judul besar */
+    font-weight: 700; /* Tebal */
+    text-shadow: 0 0 10px rgba(0, 0, 0, .3); /* Bayangan teks */
+}
+
+.home-content p{
+    font-size: 20px; /* Ukuran paragraf */
+    line-height: 1.6; /* Jarak antar baris */
+    text-align:center; /* Rata tengah */
+    text-shadow: 0 0 10px rgba(0, 0, 0, .3); /* Bayangan teks */
+    margin-bottom: 30px; /* Spasi bawah */
+    padding-top: 20px; /* Spasi atas */
+}
+
+.home-content .start-btn{
+    width: 190px; /* Lebar tombol */
+    height:55px; /* Tinggi tombol */
+    background: aqua; /* Warna latar tombol */
+    border: 2px solid black; /* Garis tepi hitam */
+    outline: none; /* Hilangkan garis fokus */
+    border-radius: 6px; /* Sudut membulat */
+    box-shadow: 0 0 10px aqua; /* Bayangan luar */
+    font-size: 18px; /* Ukuran teks */
+    color: #fff; /* Warna teks putih */
+    letter-spacing: 1px; /* Spasi antar huruf */
+    font-weight: 600; /* Tebal */
+    cursor: pointer; /* Kursor menjadi pointer saat hover */
+    transition: .5s; /* Efek transisi */
+    margin-top: 10px; /* Spasi atas */
+}
+
+.home-content .start-btn:hover{
+    background: black; /* Warna saat hover */
+    box-shadow: none; /* Hilangkan bayangan */
+}
+
+.popup-info{
+    position: absolute; /* Posisi absolut di tengah layar */
+    top:50%; /* Pusat vertikal */
+    left:50%; /* Pusat horizontal */
+    transform: translate(-50%, -50%) scale(.9); /* Geser ke tengah dan sedikit dikecilkan */
+    width: 500px; /* Lebar popup */
+    background: #aaa; /* Warna abu terang */
+    border-radius: 6px; /* Sudut membulat */
+    padding: 10px 25px; /* Ruang dalam */
+    opacity: 0; /* Sembunyikan */
+    pointer-events: none; /* Tidak bisa diklik */
+    transition: .3s ease; /* Transisi saat muncul */
+}
+
+.popup-info.active{
+    opacity: 1; /* Munculkan */
+    pointer-events: auto; /* Bisa diklik */
+    /* scale = memperbesar / memperkecil */
+    transform: translate(-50%, -50%) scale(1); /* Ukuran normal */
+}
+
+.popup-info h2{
+    font-size: 50px; /* Ukuran judul popup */
+    color: aqua; /* Warna teks */
+    text-align: center; /* Rata tengah */
+}
+
+.popup-info .info{
+    display: inline-block; /* Inline tapi bisa diberi margin */
+    font-size: 16px; /* Ukuran teks */
+    color: #09001d; /* Warna teks gelap */
+    font-weight: 500; /* Tebal sedang */
+    margin: 4px 0; /* Spasi vertikal antar baris */
+}
+
+.popup-info .btn-group{
+    display: flex; /* Flex horizontal */
+    justify-content: space-between; /* Spasi di antara tombol */
+    align-items: center; /* Pusat vertikal */
+    border-top: 1px solid black; /* Garis atas */
+    margin-top: 10px; /* Spasi atas */
+    padding: 15px 0 7px; /* Padding vertikal */
+}
+
+.popup-info .btn-group .info-btn{
+    display: inline-flex; /* Gabungan inline dan flex */
+    justify-content: center; /* Tengah horizontal */
+    align-items: center; /* Tengah vertikal */
+    width: 130px; /* Lebar tombol */
+    height: 45px; /* Tinggi tombol */
+    background: aqua; /* Warna latar */
+    border: 2px solid aqua; /* Border sesuai warna */
+    outline: none; /* Hilangkan outline */
+    border-radius: 6px; /* Sudut membulat */
+    text-decoration: none; /* Tanpa garis bawah */
+    font-size: 16px; /* Ukuran teks */
+    color: #09001d; /* Warna teks */
+    font-weight: 600; /* Tebal */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1); /* Bayangan halus */
+    cursor: pointer; /* Kursor pointer */
+    transition: .5s; /* Efek transisi */
+}
+
+.popup-info .btn-group .info-btn:nth-child(1){
+    background: transparent; /* Tombol transparan */
+    color: aqua; /* Warna teks */
+}
+
+.popup-info .btn-group .info-btn:nth-child(1):hover{
+    background: aqua; /* Warna saat hover */
+    color: black; /* Warna teks saat hover */
+}
+
+.popup-info .btn-group .info-btn:nth-child(2):hover{
+    background: aqua;
+    color: aqua; /* Catatan: warna teks sama dengan background, bisa tidak terbaca */
+}
+
+.quiz-section{
+    position: relative;
+    left: -50%; /* Disembunyikan ke kiri */
+    width: 100%; /* Lebar penuh */
+    background: rgb(8, 22, 22); /* Warna latar */
+    z-index: 100; /* Di atas elemen lain */
+    display: flex; /* Flexbox */
+    justify-content: center; /* Tengah horizontal */
+    align-items: center; /* Tengah vertikal */
+    transition: .8s ease-in-out; /* Efek transisi */
+    transition-delay: .25s; /* Delay sebelum mulai */
+}
+
+.quiz-section.active{
+    left: 0; /* Tampilkan bagian kuis */
+}
+
+.quiz-section .quiz-box{
+    position: relative;
+    width: 500px; /* Lebar box kuis */
+    line-height: 1.6; /* Jarak antar baris */
+    background: transparent; /* Latar transparan */
+    border: 2px solid aqua; /* Border warna aqua */
+    color: #fff; /* Warna teks */
+    border-radius: 6px; /* Sudut membulat */
+    display: flex; /* Flexbox vertikal */
+    flex-direction: column;
+    padding: 20px 30px;
+    opacity: 0; /* Disembunyikan */
+    pointer-events: none;
+    transform: scale(.9); /* Ukuran lebih kecil */
+    transition: .3s ease;
+    transition-delay: 0s;
+}
+
+.quiz-section .quiz-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: 1s ease;
+    transition-delay: 1s;
+}
+
+.quiz-box h1{
+    font-size: 32px;
+    text-align: center;
+    background: linear-gradient(50deg, transparent, aqua, transparent);
+    border-radius: 6px;
+}
+
+.quiz-box .quiz-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1.5px solid aqua;
+    margin-bottom: 30px;
+}
+
+.quiz-header span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.quiz-header .header-score{
+    background: rgb(99, 205, 205);
+    border-radius: 3px;
+    padding: 7px;
+}
+
+.quiz-box .question-text{
+    font-size: 24px;
+    font-weight: 600; /* sebelumnya salah: '600px' */
+}
+
+.option-list .option{
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 3px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.option-list .option:hover{
+    background: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.option-list .option.correct{
+    background: #09001d;
+    color: #00a63d;
+    border-color: #00a63d;
+}
+
+.option-list .option.incorrect{
+    background: #09001d;
+    color: #a60045;
+    border-color: #a60045;
+}
+
+.option-list .option.disabled{
+    pointer-events: none;
+}
+
+.quiz-box .quiz-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid  aqua;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.quiz-footer .question-total{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.quiz-footer .next-btn{
+    width: 100px;
+    height: 45px;
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, .3);
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.quiz-footer .next-btn.active{
+    pointer-events: auto;
+    background: aqua;
+    border-color: aqua;
+    color: #fff;
+}
+
+.quiz-footer .next-btn.active:hover{
+    background: rgb(99, 205, 205);
+    border-color: aqua;
+    color: #fff;
+}
+
+.quiz-section .kotak-nilai{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.9);
+    width: 500px;
+    background: transparent;
+    border: 2px solid aqua;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.quiz-section .kotak-nilai.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(.9); /* memindahkan elemen ke tengah secara horizontal & vertikal, lalu memperkecil ukurannya menjadi 90% */
+ 
+}
+
+.kotak-nilai h2 {
+    font-size: 52px;
+}
+
+.kotak-nilai .persentase-container{
+    width: 300px;
+    background: rgb(8, 22, 22);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px;
+}
+
+.persentase-container .circular-progress{
+    position: relative; /* posisi elemen relatif terhadap posisi aslinya, memungkinkan penggeseran dengan top/left/right/bottom */
+    width: 250px;
+    height: 250px;
+    background: conic-gradient(aqua 3.6deg, rgba(255, 255, 255, 1) 0deg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.persentase-container .circular-progress::before{
+    content: '';
+    position: absolute; 
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background: rgb(8, 22, 22);
+}
+
+.circular-progress .progress-value{
+    position: relative;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.persentase-container .score-text{
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.kotak-nilai .buttons{
+    display: flex;
+}
+
+.buttons button{
+    width: 130px;
+    height: 47px;
+    background: aqua;
+    border: 2px solid aqua; /* sebelumnya salah: 'border-radius: 2px solid aqua;' */
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+/* design button terakhir di quiz dan */
+
+.buttons button:nth-child(1) {
+    background: aqua;
+    border-color: aqua;
+}
+
+.buttons button:nth-child(2) {
+    background: transparent;
+    color: aqua;
+}
+
+.buttons button:nth-child(2):hover {
+    background: aqua;
+    color: #fff;
+}
